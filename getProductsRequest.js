@@ -41,34 +41,3 @@ sendRequest(config, 'GET', '/products')
     .catch(function(err) {
         console.log("Error data: " + err)
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // console.log(epages)
-
-    // epages.shop.get()
-    //     .then( function(data) {
-    //         console.log("Response: " + data);
-    //     })
-    //     .catch(function(err) {
-    //         console.log(err);
-    //     });
-    //
-    // epages.orders.get()
-    //     .then( function(data) {
-    //         console.log("Response: " + data);
-    //     })
-    //     .catch(function(err) {
-    //         console.log(err);
-    //     });
