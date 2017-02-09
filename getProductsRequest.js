@@ -1,5 +1,4 @@
-// patchRequest - Updates stock level of the given product
-
+// getProductsRequest.js - fetch all of the products
 
 const axios = require('axios');
 
@@ -13,15 +12,10 @@ const sendRequest = (config, method, path) => new Promise((resolve, reject) => {
         method: method, // default
         url: path,
         baseURL: baseURL,
-        data: JSON.stringify([{
-            op: 'add',
-            path: '/stocklevel',
-            value: 2
-        }]),
         headers: {
             'Accept': 'application/vnd.epages.v1+json',
             'Authorization': 'Bearer ' + config.token,
-            'Content-Type': 'application/json-patch+json', // typical request uses: application/json
+            'Content-Type': 'application/json',
             'User-Agent': 'request'
         }
     }
@@ -40,11 +34,41 @@ const sendRequest = (config, method, path) => new Promise((resolve, reject) => {
 
 
 
-
-sendRequest(config, 'PATCH', '/products/57EEF0FC-C64B-2D14-2083-0A2810103414')
+sendRequest(config, 'GET', '/products')
     .then(function(data) {
         console.log("Result data: " + JSON.stringify(data));
     })
     .catch(function(err) {
         console.log("Error data: " + err)
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // console.log(epages)
+
+    // epages.shop.get()
+    //     .then( function(data) {
+    //         console.log("Response: " + data);
+    //     })
+    //     .catch(function(err) {
+    //         console.log(err);
+    //     });
+    //
+    // epages.orders.get()
+    //     .then( function(data) {
+    //         console.log("Response: " + data);
+    //     })
+    //     .catch(function(err) {
+    //         console.log(err);
+    //     });
