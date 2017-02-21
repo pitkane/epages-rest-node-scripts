@@ -7,10 +7,10 @@ const epages = require('./epages-api');
 const data = JSON.stringify([{
               op: 'add',
               path: '/productImage',
-              value: 'emoji-the_king.png'
+              value: 'icon.png'
             }]);
 
-epages.sendRequest('PATCH', '/products/58ABE1A0-6B43-798C-9914-0AD337157EFC')
+epages.sendRequest('PATCH', '/products/58ABE1A0-6B43-798C-9914-0AD337157EFC', data)
     .then((data) => {
         console.log("Result data: " + JSON.stringify(data));
     })

@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.3"
+    "axios": "^0.15.3",
+    "concat-stream": "^1.6.0",
+    "form-data": "^2.1.2",
+    "lodash": "^4.17.4"
   }
 }
