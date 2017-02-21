@@ -1,23 +1,19 @@
-// patchRequest - Updates stock level of the given product
-
-
 const axios = require('axios');
 
 const config = require('./config');
 
-const sendRequest = (config, method, path) => new Promise((resolve, reject) => {
+const sendRequest = (method, path, data = null) => new Promise((resolve, reject) => {
 
     const baseURL = config.schema + '://' + config.shop_host + '/rs/shops/' + config.shop_name;
+
+    let contentType = 'application/json';
+    if (method === 'PATCH') contentType = 'application/json-patch+json'
 
     const axiosOptions = {
         method: method, // default
         url: path,
         baseURL: baseURL,
-        data: JSON.stringify([{
-            op: 'add',
-            path: '/stocklevel',
-            value: 2
-        }]),
+        data: data,
         headers: {
             'Accept': 'application/vnd.epages.v1+json',
             'Authorization': 'Bearer ' + config.token,
@@ -30,21 +26,16 @@ const sendRequest = (config, method, path) => new Promise((resolve, reject) => {
 
     axios(axiosOptions)
         .then((response) => {
+          console.log(response)
             resolve(response.data);
         })
         .catch((err) => {
+          console.log(err)
             reject(err);
         });
 
 });
 
-
-
-
-sendRequest(config, 'PATCH', '/products/57EEF0FC-C64B-2D14-2083-0A2810103414')
-    .then(function(data) {
-        console.log("Result data: " + JSON.stringify(data));
-    })
-    .catch(function(err) {
-        console.log("Error data: " + err)
-    });
+module.exports = {
+  sendRequest: sendRequest
+};
