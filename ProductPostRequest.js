@@ -14,8 +14,8 @@ const sendRequest = (config, method, path) => new Promise((resolve, reject) => {
         url: path,
         baseURL: baseURL,
         data: JSON.stringify({
-          "productNumber": "TP-2000",
-          "name": "Another Brand new product",
+          "productNumber": "Tuote-0002",
+          "name": "Tuote-0002",
           "shortDescription": "Awesome product",
           "description": "This is a brand new product",
           "manufacturer": "Awesome Products Company",
